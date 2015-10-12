@@ -16,7 +16,7 @@ public class kontrolltoo1 {
 		   System.out.println ("Massiivis {-1,-2,5,6} on "+negElArv(new int[]{-1,-2,5,6})+" negatiivset arvu");
 		   System.out.println ("Massiivis {1,2,5,6} on "+negElArv(new int[]{1,2,5,6})+" negatiivset arvu");
 
-		   //Negatiivsete arvude arv
+		   //Alla keskmiste arvude arv
 		   System.out.println ("Massiivis {-1.,-2.,0.,5.,6.} on "+allaKeskmise(new double[]{-1.,-2.,0.,5.,6.})+" alla keskmise arvu");
 		   System.out.println ("Massiivis {1.,6.,5.,5.,6.} on "+allaKeskmise(new double[]{1.,6.,5.,5.,6.})+" alla keskmise arvu");
 		   
@@ -48,7 +48,6 @@ public class kontrolltoo1 {
 	       keskmine = keskmine / d.length;
 	       
 	       for (double element : d) if (element < keskmine) alla++;
-	       
 	       
 	       return alla;
 	   }
