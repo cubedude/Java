@@ -15,11 +15,20 @@ public class kontrolltoo1 {
 		   //Negatiivsete arvude arv
 		   System.out.println ("Massiivis {-1,-2,5,6} on "+negElArv(new int[]{-1,-2,5,6})+" negatiivset arvu");
 		   System.out.println ("Massiivis {1,2,5,6} on "+negElArv(new int[]{1,2,5,6})+" negatiivset arvu");
+		   
+		   //Negatiivsete arvude summa
+		   System.out.println ("Massiivis {-1,-2,5,6} on negatiivsete arvude summa "+negSumma(new int[]{-1,-2,5,6}));
+		   System.out.println ("Massiivis {1,2,5,6} on negatiivsete arvude summa "+negSumma(new int[]{1,2,5,6}));
 
 		   //Alla keskmiste arvude arv
 		   System.out.println ("Massiivis {-1.,-2.,0.,5.,6.} on "+allaKeskmise(new double[]{-1.,-2.,0.,5.,6.})+" alla keskmise arvu");
 		   System.out.println ("Massiivis {1.,6.,5.,5.,6.} on "+allaKeskmise(new double[]{1.,6.,5.,5.,6.})+" alla keskmise arvu");
+
+		   //Üle keskmiste arvude arv
+		   System.out.println ("Massiivis {-1.,-2.,0.,5.,6.} on üle keskmise "+keskmisestParemaid(new double[]{-1.,-2.,0.,5.,6.})+" arvu");
+		   System.out.println ("Massiivis {1.,6.,5.,5.,6.} on üle keskmise "+keskmisestParemaid(new double[]{1.,6.,5.,5.,6.})+" arvu");
 		   
+
 	       return;
 	   }
 	   
@@ -40,6 +49,15 @@ public class kontrolltoo1 {
 	       return negatives;   
 	   }
 	   
+	   public static int negSumma (int[] m)
+	   {
+	       int negSum = 0;
+	       
+	       for (int number : m) if(number < 0) negSum += number ;
+	       
+	       return negSum;   
+	   }
+	   
 	   public static int allaKeskmise (double[] d) {
 	       int alla = 0;
 	       double keskmine = 0;
@@ -50,5 +68,18 @@ public class kontrolltoo1 {
 	       for (double element : d) if (element < keskmine) alla++;
 	       
 	       return alla;
+	   }	 
+	   
+	   public static int keskmisestParemaid (double[] d) {
+	       int ule = 0;
+	       double keskmine = 0;
+	       
+	       for (double element : d) keskmine += element;
+	       keskmine = keskmine / d.length;
+	       
+	       for (double element : d) if (element > keskmine) ule++;
+	       
+	       return ule;
 	   }
+
 }
