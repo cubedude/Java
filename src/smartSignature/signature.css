@@ -1,0 +1,33 @@
+.root{
+    -fx-background-color: #eceff0;
+}
+
+.label{
+    -fx-text-fill:#5a5a5a;
+}
+
+.button{
+    -fx-background-color: #27aae0;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 0;
+}
+.button:hover{
+    -fx-background-color: #2a80b9;
+}
+
+.errorInput{
+	-fx-text-box-border: #e97575 ;
+	-fx-focus-color: #e97575;
+    -fx-text-fill: #e97575;
+}
+
+.errorLabel{
+	-fx-stroke: #e97575;
+    -fx-text-fill: #e97575;
+	-fx-stroke-width: 2;
+    -fx-background-radius: 1;
+}
+
+.top_padding_20{
+	-fx-padding: 20px 0px 0px 0px;
+}
