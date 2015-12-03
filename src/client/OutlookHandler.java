@@ -39,13 +39,15 @@ public class OutlookHandler {
 		File[] sigFiles = sigFolder.listFiles();
 
 		//Watch for every file
-		for (File file : sigFiles) {
-		    if (file.isFile()) {
-				//Get name, strip the extension, add to list
-		    	String fileName = file.getName();
-		    	String onlyFileName = stripExtension(fileName);
-		    	hs.add(onlyFileName);
-		    }
+		if(sigFiles != null){
+			for (File file : sigFiles) {
+			    if (file.isFile()) {
+					//Get name, strip the extension, add to list
+			    	String fileName = file.getName();
+			    	String onlyFileName = stripExtension(fileName);
+			    	hs.add(onlyFileName);
+			    }
+			}
 		}
 
 		//Set to needed format and return

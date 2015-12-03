@@ -221,27 +221,26 @@ public class SmartSignature extends Application{
         errorLabel.setPrefWidth(guiWidth);
         GridPane.setConstraints(errorLabel, 0, 7);
 
-
         //Apply web signature to outlook
         Button applySig = new Button("Asenda!");
         applySig.setPrefWidth(guiWidth);
         GridPane.setConstraints(applySig, 0, 8);
 
         //Refresh button
-        Button refreshButton = new Button("Lae väljad uuesti");
+        Button refreshButton = new Button("Lae andemed uuesti");
         refreshButton.getStyleClass().add("green_button");
         refreshButton.setPrefWidth(guiWidth);
         GridPane.setConstraints(refreshButton, 0, 9);
 
         //Check which one to display
-        if(sigOptions.isEmpty()){
+        if(sigOptions == null || sigOptions.isEmpty()){
             grid.getChildren().add(sigLink);
         }else{
             grid.getChildren().add(sigBox);
         }
         
         //Check which one to display
-        if(sigOutOptions.isEmpty()){
+        if(sigOutOptions == null || sigOutOptions.isEmpty()){
             grid.getChildren().add(sysRefresh);
         }else{
             grid.getChildren().add(sigOutBox);
@@ -289,22 +288,22 @@ public class SmartSignature extends Application{
         applySig.setOnAction(e -> {
             //If there isnt any SC signature options, display error
             if(sigOptions.isEmpty()){
-            	errorLabel.setText("Lisa signatuure SC-sse ja uuenda välju");
+            	errorLabel.setText("  Lisa signatuure SC-sse ja uuenda välju");
                 errorLabel.getStyleClass().add("finalErrorLabel");
             }
             //If there isnt any Outlook signature options, display error
             else if(sigOutOptions.isEmpty()){
-            	errorLabel.setText("Lisa signatuure Outlooki ja uuenda välju");
+            	errorLabel.setText("  Lisa signatuure Outlooki ja uuenda välju");
                 errorLabel.getStyleClass().add("finalErrorLabel");
         	}
             //If there isnt any SC signature options selected, display error
             else if(sigBox.getValue() == null){
-            	errorLabel.setText("Selekteeri SC signatuur mida tahad kasutada");
+            	errorLabel.setText("  Vali SC signatuur mida tahad kasutada");
                 errorLabel.getStyleClass().add("finalErrorLabel");
             }
             //If there isnt any Outlook signature options selected, display error
             else if(sigOutBox.getValue() == null){
-            	errorLabel.setText("Selekteeri Outlooki signatuur mida tahad kasutada");
+            	errorLabel.setText("  Vali Outlooki signatuur mida tahad kasutada");
                 errorLabel.getStyleClass().add("finalErrorLabel");
             }
             //If there isnt any problems, try to replace
@@ -316,7 +315,7 @@ public class SmartSignature extends Application{
     			//If error occured, show it
     			if(status != 0){
                 	//sigOutBox.getValue().toString().isEmpty()
-                	errorLabel.setText("Signatuuri ei leitud!");
+                	errorLabel.setText("  Signatuuri ei leitud!");
                     errorLabel.getStyleClass().add("finalErrorLabel");
     			}
     			else{
@@ -325,12 +324,12 @@ public class SmartSignature extends Application{
 
         			//If there was an error, display it
         			if(statusOut != 0){
-                    	errorLabel.setText("Signatuuri asendamisega tekkis probleem!");
+                    	errorLabel.setText("  Signatuuri asendamisega tekkis probleem...");
                         errorLabel.getStyleClass().add("finalErrorLabel");
         			}
         			//if status = 0, it was an success
         			else{
-	                	errorLabel.setText("Signatuur on asendatud!");
+	                	errorLabel.setText("  Signatuur on asendatud!");
 	                    errorLabel.getStyleClass().add("finalSuccessLabel");
         			}
     			}

@@ -167,8 +167,8 @@ public class DataClass {
 		in.close();
 
     	//If responce was too short, return error
-		if(resp.toString().length() < 3) throw new Exception("Failed authentication");
-
+		if(resp.toString().length() < 1) throw new Exception("Failed authentication");
+		
     	//Return the responce
 		return resp.toString();
 	}
@@ -197,10 +197,16 @@ public class DataClass {
      * @return ObservableList<String> options
      */
 	public ObservableList<String> processList(String rawList) {
-		//Split the string
-		String[] optArray = rawList.split(";");
-		//Add to array
-        ObservableList<String> options = FXCollections.observableArrayList(optArray);
+		//initiate variable
+		ObservableList<String> options = null;
+		
+		//if raw list is an actual list
+		if(list.length() > 1){
+			//Split the string 
+			String[] optArray = rawList.split(";");
+			//Add to array
+	        options = FXCollections.observableArrayList(optArray);
+		}
         //Return
 	    return options;
 	}
