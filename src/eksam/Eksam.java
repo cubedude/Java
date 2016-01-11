@@ -2,17 +2,17 @@ package eksam;
 
 public class Eksam { 
 
-  public static void main(String[] args) {
-	  	System.out.println ("\n == asenda == \n"); 
-     	String s = "Tere, TUDENG,   tore ARVUTI sul!";
+	public static void main(String[] args) {
+		System.out.println ("\n == asenda == \n"); 
+	  	String s = "Tere, TUDENG,   tore ARVUTI sul!";
      	String t = asenda (s); // "Tere,-TUDENG,---tore-ARVUTI-sul!"
      	System.out.println (s + " > " + t);
 
-	  	System.out.println ("\n == negElArv == \n"); 
-	 	System.out.println (negElArv (new int[]{0}));
+     	System.out.println ("\n == negElArv == \n"); 
+     	System.out.println (negElArv (new int[]{0}));
 
-	  	System.out.println ("\n == allaKeskmise == \n"); 
-     	System.out.println (allaKeskmise (new double[]{0.}));
+     	System.out.println ("\n == allaKeskmise == \n"); 
+	  	System.out.println (allaKeskmise (new double[]{0.}));
    
 
 	  	System.out.println ("\n == reaMinid == \n"); 
@@ -20,13 +20,13 @@ public class Eksam {
 	  	System.out.println ("{"+res[0]+","+res[1]+"}"); // {1, 4}
 
 	  	System.out.println ("\n == sortByAvg == \n"); 
-      	int[] rese = sortByAvg (new int[][] { {4, 0, 0}, {1, 2, 0}, {4, 0, 0} }); // {1,0}
+	  	int[] rese = sortByAvg (new int[][] { {4, 0, 0}, {1, 2, 0}, {4, 0, 0} }); // {1,0}
 	  	//{5,3,1},{4,3,5}}
 	  	//{{4, 0, 0}, {1, 2, 0}, {4, 0, 0}}
 	  	//{{1, 2, 3}, {4, 5}, {2}}
-      	for (int i=0; i < rese.length; i++) {
-    	  System.out.print (rese[i] + " ");
-      	}
+	  	for (int i=0; i < rese.length; i++) {
+	  		System.out.print (rese[i] + " ");
+	  	}
 
 	  	System.out.println ("\n == greatestPrimeFactor == \n"); 
 	  	System.out.println (greatestPrimeFactor (1234)); // 617
