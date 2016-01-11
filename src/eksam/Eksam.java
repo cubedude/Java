@@ -20,7 +20,7 @@ public class Eksam {
 	  	System.out.println ("{"+res[0]+","+res[1]+"}"); // {1, 4}
 
 	  	System.out.println ("\n == sortByAvg == \n"); 
-	  	int[] rese = sortByAvg (new int[][] { {4, 0, 0}, {1, 2, 0}, {4, 0, 0} }); // {1,0}
+	  	int[] rese = sortByAvg (new int[][] { {4, 0, 0}, {1, 2, 0}, {4, 0, 0} }); //  {0, 2, 1}
 	  	//{5,3,1},{4,3,5}}
 	  	//{{4, 0, 0}, {1, 2, 0}, {4, 0, 0}}
 	  	//{{1, 2, 3}, {4, 5}, {2}}
@@ -40,47 +40,68 @@ public class Eksam {
 	public static int greatestPrimeFactor (int n) {
 		/*
 		 * HOIATUS: mul pani timeouti, arvatavasti lähenemine vale
+		 * Muidu töötab..
 		 */
-
-		int prime = 0;
 		
-		for(int i = n; i > 1; i--){
-			if(n%i == 0){
-				int bool = 0;
-				for(int j = 2; j <= i; j++){
-					if(i%j == 0 && j != i) bool = 1;
+		int prime = 0;
+		// hakkame kõiki arve läbi käima alates kõige suuremast ehk "n"ist
+		for(int i = n; i >= 1; i--){
+			//vaatame kas käes olev arv jagub ideaalselt n-iga
+			if(n%i == 0){ 
+				//eeldame alguses et on tegemist algarvuga
+				boolean algarv = true; 
+				//nüüd vaatame kõik arvud algusest läbi (alates 2-st sest 1ga jaguvad kõik)
+				for(int j = 2; j <= i; j++){ 
+					//kui arv jagub mingi muu arvuga ja see ei ole arv ise
+					if(i%j == 0 && j != i){ 
+						//märgmime et leitsime mingi muu vaste
+						algarv = false; 
+						 //lõpetame kontrollimise
+						break;
+					}
 				}
-				if(bool == 0) prime = i;
+				//kui kontroll läbitud ja eeldus on ikka paigas, siis see peaks olema kõige kõrgem algarv
+				if(algarv == true){
+					prime = i;
+					//lõpetame otsimise
+					break; 
+				}
 			}	
-			if(prime != 0) break;
 		}
-
+		//tagastame algarvu mis tuli
 		return prime;
 	}
 
    	public static int[] sortByAvg (int[][] g) {
+   		//Defineerime paar muutujat mida vaja on alguses
    		int[] pingerida = new int[g.length];
    		double[] keskmised = new double[g.length];
 		double keskmine = 0;
+		
+		//Käime kõik õpilased läbi
 		for (int i = 0; i < g.length; i++) {
+			//Arvutame õpilase keskmise hinde
 			keskmine = 0;
 			for (double hinne : g[i]) keskmine += hinne;
 			keskmine = keskmine / g[i].length;
+			//Paneme keskmise hinde oma massiivi
 			keskmised[i] = keskmine;
 		}
 		
-		for (int j = 0; j < g.length; j++){
-			keskmine = 0;
-			for (double hinn : g[j]) keskmine += hinn;
-			keskmine = keskmine / g[j].length;
-				
+		//Nüüd käime kõik õpilased uuesti läbi võrdluse jaoks
+		for (int j = 0; j < g.length; j++){			
+			//õpilase järjekorra number
 			int suuremad = 0;
+			//käime kõik keskmised läbi
 			for (int x = 0; x < keskmised.length; x++){
-				if (keskmised[x] > keskmine) suuremad++;
-				else if(keskmised[x] == keskmine){
+				//Kui kellegil on paremad hinded kui käes oleval õpilasel, siis käesoleva õpilase järjekord suureneb ühe võrra
+				if (keskmised[x] > keskmised[j]) suuremad++;
+				else if(keskmised[x] == keskmised[j]){ 
+					//kui hinded on samad, siis vaadatakse kumb ennem nimekirjas oli
 					if(j > x) suuremad++;
 				}
 			}
+			//sisestame õpilase meie tehtud järjekorda ja massiivi väärtuseks tema algne järjekorra koht
 			pingerida[suuremad] = j;
 		}
    		return pingerida; 
